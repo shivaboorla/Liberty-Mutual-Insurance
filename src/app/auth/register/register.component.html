@@ -1,0 +1,136 @@
+<!-- <div class="register-container">
+  <mat-card>
+    <mat-card-title>Register</mat-card-title>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          placeholder="Enter username"
+          formControlName="username"
+          required
+        />
+        @if (registerForm.get('username')?.hasError('required')) {
+        <mat-error> Username is required </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="Enter password"
+          type="password"
+          formControlName="password"
+          required
+        />
+        @if (registerForm.get('password')?.hasError('required')) {
+        <mat-error> Password is required </mat-error>
+        } @if (registerForm.get('password')?.hasError('minlength')) {
+        <mat-error> Minimum length is 6 characters </mat-error>
+        }
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!registerForm.valid"
+      >
+        Register
+      </button>
+      @if (errorMessage) {
+      <div class="error-message">{{ errorMessage }}</div>
+      }
+    </form>
+  </mat-card>
+</div> -->
+
+<!-- src/app/register/register.component.html -->
+<div class="register-container">
+  <mat-card>
+    <mat-card-title>Register</mat-card-title>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Username -->
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Enter username" />
+        @if (registerForm.get('username')?.invalid &&
+        registerForm.get('username')?.touched) {
+        <mat-error> Username is required (min 3 chars) </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Email -->
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="Enter email" />
+        @if (registerForm.get('email')?.invalid &&
+        registerForm.get('email')?.touched) {
+        <mat-error> Enter a valid email address </mat-error>
+        }
+      </mat-form-field> -->
+
+
+
+      <!-- Password -->
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"
+          placeholder="Enter password" />
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+        </button>
+        @if (registerForm.get('password')?.invalid &&
+        registerForm.get('password')?.touched) {
+        <mat-error> Password must be at least 6 characters </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Confirm Password -->
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword"
+          placeholder="Confirm password" />
+        <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" type="button">
+          <mat-icon>{{
+            hideConfirmPassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+        </button>
+        @if (registerForm.hasError('mismatch') &&
+        registerForm.get('confirmPassword')?.touched) {
+        <mat-error> Passwords do not match </mat-error>
+        }
+      </mat-form-field>
+      <!-- User Role Message -->
+      <mat-form-field>
+        <mat-label>Select Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="admin">Admin</mat-option>
+          <mat-option value="user">User</mat-option>
+        </mat-select>
+        @if (registerForm.get('role')?.invalid && registerForm.get('role')?.touched)
+        {
+        <mat-error>
+          Role selection is required
+        </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Error Message -->
+      @if (errorMessage) {
+      <mat-error>{{ errorMessage }}</mat-error>
+      }
+
+      <!-- Submit Button -->
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+        Register
+      </button>
+
+      <!-- Login Link -->
+      <p>Already have an account? <a routerLink="/login">Login</a></p>
+    </form>
+  </mat-card>
+</div>

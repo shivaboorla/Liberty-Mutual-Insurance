@@ -1,0 +1,23 @@
+<!-- src/app/login/login.component.html -->
+<div class="login-container">
+  <mat-card>
+    <img mat-card-image src="../assets/images/liberty-social-icon.png" alt="Liberty Social Icon" width="80px">
+    <mat-card-title>Login</mat-card-title>
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" required />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" required />
+      </mat-form-field>
+      <div class="button">
+        <button mat-raised-button color="primary" [disabled]="loginForm.invalid" type="submit">
+          Login
+        </button>
+      </div>
+      <p>Create an account? <a routerLink="/register">Register Here</a></p>
+    </form>
+  </mat-card>
+</div>

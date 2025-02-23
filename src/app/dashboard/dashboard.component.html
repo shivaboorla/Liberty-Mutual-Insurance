@@ -1,0 +1,63 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened>
+        <mat-toolbar color="primary">Dashboard</mat-toolbar>
+        <mat-nav-list>
+            <!-- <a mat-list-item routerLink="/home">Home</a> -->
+            <a mat-list-item routerLink="/policy-details">Policies</a>
+            <a mat-list-item routerLink="/profile">Profile Details</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="sidenav.toggle()" class="menu-btn" color="">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>My Dashboard</span>
+            <span class="spacer"></span>
+            <span class="welcome-text">Hello {{ role }}</span>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon class="menu-btn">person_pin</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="logout()">
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </mat-toolbar>
+
+        <div class="content">
+            <mat-card>
+                <mat-card-title>{{message}}</mat-card-title>
+                <mat-card-content>
+                    <!-- Manage your policies and settings here. -->
+                    <p>Your role: <strong>{{ role }}</strong></p>
+                    <app-profile-details></app-profile-details>
+
+                    @if (role === 'admin') {
+                    <div>
+                        <app-policies></app-policies>
+                        <!-- <p>You have administrative privileges and can manage users and settings.</p> -->
+                    </div>
+                    }
+
+                    @if (role === 'user') {
+                    <div>
+                        <h3>User Dashboard</h3>
+
+                        <p>You are logged in as a user. Enjoy your personalized content.</p>
+                    </div>
+                    }
+
+                    @if (role === 'guest') {
+                    <div>
+                        <h3>Guest View</h3>
+                        <p>Limited view available. Please login to access more features.</p>
+                    </div>
+                    }
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

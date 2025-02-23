@@ -1,0 +1,30 @@
+/* src/app/register/register.component.css */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+mat-card {
+    width: 400px;
+    padding: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-title {
+    padding: 20px 0px;
+}
+
+button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}

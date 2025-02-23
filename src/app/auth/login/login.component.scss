@@ -1,0 +1,50 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-card {
+  padding: 20px;
+  width: 400px;
+}
+
+mat-card-title {
+  padding: 20px 0px;
+}
+
+/* In your styles.css or component CSS file */
+.snackbar-success {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  justify-content: center;
+  display: flex;
+  button {
+    width: 50%;
+    margin-top: 0px;
+  }
+}
+
+p {
+  text-align: center;
+  margin-top: 15px;
+}

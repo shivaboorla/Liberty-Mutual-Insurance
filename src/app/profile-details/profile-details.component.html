@@ -1,0 +1,26 @@
+@if (!error) {
+<div class="profile-container">
+    <mat-card>
+        <mat-card-title>{{ message }}</mat-card-title>
+        @if (policyData) {
+        <mat-card-content>
+            <p><strong>Username:</strong> {{ policyData.username }}</p>
+            <p><strong>Role:</strong> {{ policyData.role }}</p>
+            <p><strong>Policy Number:</strong> {{ policyData.policyNumber }}</p>
+            <p><strong>Valid Till:</strong> {{ policyData.validTill }}</p>
+        </mat-card-content>
+        }
+    </mat-card>
+</div>
+}
+
+@else {
+<ng-template #errorTemplate>
+    <mat-card>
+        <mat-card-title>Error</mat-card-title>
+        <mat-card-content>
+            <p>{{ error }}</p>
+        </mat-card-content>
+    </mat-card>
+</ng-template>
+}
