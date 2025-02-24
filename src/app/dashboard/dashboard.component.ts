@@ -32,7 +32,7 @@ export class DashboardComponent {
       try {
         // Decode the token payload (this is a simple example; consider using a library for production)
         const payload = JSON.parse(atob(token.split('.')[1]));
-        this.role = payload.role || '';
+        this.role = payload.role || 'user';
         console.log(this.role);
       } catch (error) {
         console.error('Error decoding token', error);

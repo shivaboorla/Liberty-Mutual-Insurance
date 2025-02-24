@@ -17,14 +17,15 @@ export const routes: Routes = [
         path: 'policy-details',
         component: PoliciesComponent,
       },
+      {
+        path: 'profile',
+        component: ProfileDetailsComponent,
+      },
     ],
     canActivate: [RoleGuard],
     data: { expectedRole: 'admin' }, // Adjust expected role as needed
   },
-  {
-    path: 'profile',
-    component: ProfileDetailsComponent,
-  },
+
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];

@@ -36,9 +36,7 @@ export class RegisterComponent {
         confirmPassword: ['', Validators.required],
         role: ['user', [Validators.required]],
       },
-      { validator: this.passwordMatchValidator }
-
-      // Optionally, add more fields (e.g., confirm password, role) as needed
+      { validator: this.passwordMatchValidator } // Optionally, add more fields (e.g., confirm password, role) as needed
     );
   }
 
@@ -87,8 +85,6 @@ export class RegisterComponent {
           duration: 3000, // Duration in milliseconds
           panelClass: ['snackbar-success'], // Optional: for custom styling
         });
-        console.error('Registration error:', error);
-        this.errorMessage = error.error?.message || 'Registration failed';
       },
     });
   }

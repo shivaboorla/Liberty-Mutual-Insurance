@@ -32,7 +32,6 @@
                 <mat-card-content>
                     <!-- Manage your policies and settings here. -->
                     <p>Your role: <strong>{{ role }}</strong></p>
-                    <app-profile-details></app-profile-details>
 
                     @if (role === 'admin') {
                     <div>
@@ -40,22 +39,20 @@
                         <!-- <p>You have administrative privileges and can manage users and settings.</p> -->
                     </div>
                     }
-
                     @if (role === 'user') {
                     <div>
                         <h3>User Dashboard</h3>
+                        <app-profile-details></app-profile-details>
 
                         <p>You are logged in as a user. Enjoy your personalized content.</p>
                     </div>
                     }
-
-                    @if (role === 'guest') {
+                    <!-- @if (role === 'guest') {
                     <div>
                         <h3>Guest View</h3>
                         <p>Limited view available. Please login to access more features.</p>
                     </div>
-                    }
-
+                    } -->
                 </mat-card-content>
             </mat-card>
         </div>

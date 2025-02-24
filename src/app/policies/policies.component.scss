@@ -4,6 +4,33 @@
   justify-content: center;
   align-items: center;
 }
+
 .spacer {
   flex: 1 1 auto;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+
+/* src/app/dashboard/dashboard.component.css */
+.dashboard-container {
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
+}
+
+mat-card {
+  width: 50%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.error {
+  color: red;
 }

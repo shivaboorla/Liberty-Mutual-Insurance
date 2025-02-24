@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
   DashboardResponse,
+  Item,
+  policyDetails,
   PolicyResponse,
 } from '../models/policy/policy.model';
 
@@ -37,5 +39,31 @@ export class AuthService {
 
   getPolicy(): Observable<PolicyResponse> {
     return this.http.get<PolicyResponse>(`${this.baseUrl}/policy`);
+  }
+
+  // Create a new item
+  createItem(item: Item): Observable<DashboardResponse> {
+    return this.http.post<DashboardResponse>(`${this.baseUrl}/items`, item);
+  }
+
+  // Get all items
+  getItems(): Observable<policyDetails> {
+    return this.http.get<policyDetails>(`${this.baseUrl}/items`);
+  }
+
+  // Update an item by ID
+  updateItem(
+    itemId: string,
+    item: Partial<Item>
+  ): Observable<{ message: string; data: Item }> {
+    return this.http.put<{ message: string; data: Item }>(
+      `${this.baseUrl}/${itemId}`,
+      item
+    );
+  }
+
+  // Delete an item by ID
+  deleteItem(itemId: string): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.baseUrl}/${itemId}`);
   }
 }
