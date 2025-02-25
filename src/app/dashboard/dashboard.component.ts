@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { PoliciesComponent } from '../policies/policies.component';
 import { ProfileDetailsComponent } from '../profile-details/profile-details.component';
+import { PolicyListComponent } from '../policies/policy-list/policy-list.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,7 @@ import { ProfileDetailsComponent } from '../profile-details/profile-details.comp
     PoliciesComponent,
     RouterLink,
     ProfileDetailsComponent,
+    PolicyListComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -26,6 +28,7 @@ export class DashboardComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
+    // this.role = this.authService.getUserRole();
     // this.loadDashboard();
     const token = localStorage.getItem('jwtToken');
     if (token) {

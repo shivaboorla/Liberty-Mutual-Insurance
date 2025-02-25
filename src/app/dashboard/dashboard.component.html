@@ -3,7 +3,8 @@
         <mat-toolbar color="primary">Dashboard</mat-toolbar>
         <mat-nav-list>
             <!-- <a mat-list-item routerLink="/home">Home</a> -->
-            <a mat-list-item routerLink="/policy-details">Policies</a>
+            <a mat-list-item routerLink="/policy">Policies</a>
+            <a mat-list-item routerLink="/policy-view">Policy List</a>
             <a mat-list-item routerLink="/profile">Profile Details</a>
         </mat-nav-list>
     </mat-sidenav>
@@ -36,6 +37,7 @@
                     @if (role === 'admin') {
                     <div>
                         <app-policies></app-policies>
+                        <app-policy-list></app-policy-list>
                         <!-- <p>You have administrative privileges and can manage users and settings.</p> -->
                     </div>
                     }
@@ -43,6 +45,7 @@
                     <div>
                         <h3>User Dashboard</h3>
                         <app-profile-details></app-profile-details>
+                        <app-policy-list></app-policy-list>
 
                         <p>You are logged in as a user. Enjoy your personalized content.</p>
                     </div>

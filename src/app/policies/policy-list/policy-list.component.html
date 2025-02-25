@@ -1,0 +1,111 @@
+@if (items.length) {
+<table mat-table [dataSource]="items" class="mat-elevation-z8">
+    <!-- Policy Number Column -->
+    <ng-container matColumnDef="policyNumber">
+        <th mat-header-cell *matHeaderCellDef>Policy Number</th>
+        <td mat-cell *matCellDef="let item">
+            @if (editItem?._id !== item._id) {
+            <ng-container>
+                {{ item.policyNumber }}
+            </ng-container>
+            }
+            @else {
+            <mat-form-field appearance="outline">
+                <mat-label>Policy Number</mat-label>
+                <input matInput [(ngModel)]="item.policyNumber">
+            </mat-form-field>
+            }
+        </td>
+    </ng-container>
+
+    <!-- Customer ID Column -->
+    <ng-container matColumnDef="customerId">
+        <th mat-header-cell *matHeaderCellDef>Customer ID</th>
+        <td mat-cell *matCellDef="let item">
+            @if (editItem?._id !== item._id) {
+            <ng-container>
+                {{ item.customerId }}
+            </ng-container>
+            }
+            @else {
+            <mat-form-field appearance="outline">
+                <mat-label>Customer ID</mat-label>
+                <input matInput [(ngModel)]="item.customerId">
+            </mat-form-field>
+            }
+        </td>
+    </ng-container>
+
+    <!-- Policy Type Column -->
+    <ng-container matColumnDef="policyType">
+        <th mat-header-cell *matHeaderCellDef>Policy Type</th>
+        <td mat-cell *matCellDef="let item">
+            @if (editItem?._id !== item._id) {
+            <ng-container>
+                {{ item.policyType }}
+            </ng-container>
+            }
+            @else {
+            <mat-form-field appearance="outline">
+                <mat-label>Policy Type</mat-label>
+                <mat-select [(ngModel)]="item.policyType">
+                    <mat-option value="home">Home Insurance</mat-option>
+                    <mat-option value="health">Health Insurance</mat-option>
+                    <mat-option value="vehicle">Vehicle Insurance</mat-option>
+                </mat-select>
+            </mat-form-field>
+            }
+        </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let item">
+            @if (editItem?._id !== item._id) {
+            <ng-container>
+                {{ item.status }}
+            </ng-container>
+            }
+            @else {
+            <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select [(ngModel)]="item.status">
+                    <mat-option value="Active">Active</mat-option>
+                    <mat-option value="InActive">InActive</mat-option>
+                </mat-select>
+            </mat-form-field>
+            }
+        </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let item">
+            @if (userRole === 'admin') {
+
+            <ng-container>
+                <!-- If this row is not in edit mode -->
+                @if (editItem?._id !== item._id) {
+                <button mat-button color="accent" (click)="startEditing(item)">Edit</button>
+                <button mat-button color="warn" (click)="deleteItem(item)">Delete</button>
+                }
+                @else {
+                <!-- Edit Mode Actions -->
+                <button mat-raised-button color="primary" (click)="updateItem()">Save</button>
+                <button mat-button (click)="cancelEdit()">Cancel</button>
+                }
+            </ng-container>
+            }
+        </td>
+
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+</table>
+}

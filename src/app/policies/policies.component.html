@@ -1,12 +1,11 @@
 <div class="dashboard-container">
     <mat-card>
-        <mat-card-title>Dashboard</mat-card-title>
-        <mat-card-subtitle>{{ message }}</mat-card-subtitle>
+        <mat-card-title>{{ message }}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
         <mat-card-content>
             @if (error) {
             <div class="error">{{ error }}</div>
             }
-
             <!-- Admin-only: Form to add a new item -->
             @if (userRole === 'admin') {
             <div>
@@ -35,45 +34,15 @@
                         <mat-option value="InActive">InActive</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <!-- <mat-form-field appearance="outline">
-                    <mat-label>Status</mat-label>
-                    <input matInput [(ngModel)]="newItemStatus">
-                </mat-form-field> -->
                 <button mat-raised-button color="primary" (click)="addItem()">Add Item</button>
             </div>
             }
         </mat-card-content>
     </mat-card>
 </div>
-<div>
-    <mat-table [dataSource]="items">
-
-        <ng-container matColumnDef="policyNumber">
-            <mat-header-cell *matHeaderCellDef>Policy Number</mat-header-cell>
-            <mat-cell *matCellDef="let policy">{{ policy.policyNumber }}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="customerId">
-            <mat-header-cell *matHeaderCellDef>Policy Name</mat-header-cell>
-            <mat-cell *matCellDef="let policy">{{ policy.customerId }}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="type">
-            <mat-header-cell *matHeaderCellDef>Policy Type</mat-header-cell>
-            <mat-cell *matCellDef="let policy">{{ policy.type }}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef>Premium Amount</mat-header-cell>
-            <mat-cell *matCellDef="let policy">{{ policy.status }}</mat-cell>
-        </ng-container>
 
 
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-    </mat-table>
-
-
-</div>
+<!-- If there are no items -->
+<!-- <ng-template [ngIf]="!items?.length">
+    <p>No items found.</p>
+</ng-template> -->
